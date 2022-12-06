@@ -1,2 +1,2 @@
-# domo
+# Domo
 Our GitHub repository for the needs of the University course 
