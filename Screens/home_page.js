@@ -54,7 +54,7 @@ class HomePage extends Component {
       
       logoContainer: {
         paddingLeft: 17,
-        paddingTop: 10,
+        paddingTop: 15,
         paddingBottom: 11,
         zIndex: 3
       },
@@ -71,7 +71,7 @@ class HomePage extends Component {
       welcomeText: {
         paddingTop: 0,
         paddingLeft: 17,
-        paddingBottom: 28,
+        paddingBottom: 6,
         fontFamily: 'LatoBold',
         fontSize: 15,
         color: '#848487'

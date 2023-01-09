@@ -1,9 +1,11 @@
 
 import { useFonts } from 'expo-font';
-import React from "react";
+
+import * as React from 'react';
 import HomePage from './Screens/home_page';
 import ConsumptionPage from './Screens/consumption_page';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 
 export default function App() {
@@ -21,13 +23,26 @@ export default function App() {
   }  
   
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen
+    //       name="Home"
+    //       component={HomeScreen}
+    //       options={{title: 'Welcome'}}
+    //     />
+    //     <Stack.Screen name="Profile" component={HomePage} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+    
+    
+    
+    
       
       <HomePage/>
 
-      {/* <ConsumptionPage/> */}
+      // <ConsumptionPage/>
 
-    </NavigationContainer>
+    
     
   );
 }

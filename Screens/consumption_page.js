@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component, useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, TextInput, Image, ImageBackground, TouchableOpacity, onPress, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Image, ImageBackground, TouchableOpacity, onPress, Dimensions, ScrollView } from 'react-native';
 import Consumptionbutton from '../components/consumptionButton';
-
+import Consumptiongraph from '../components/consumptiongraph';
+import Consumptionsmall from '../components/consumptionsmall';
 
 class ConsumptionPage extends Component {
     render() {
 
-      
+      var today = new Date().toDateString();
       return(
         <View style = {styles.root}>
         <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
@@ -20,11 +21,17 @@ class ConsumptionPage extends Component {
             </View>
             
             <View>
-              <Text style = {styles.welcomeText}>{Date()}</Text>
+              <Text style = {styles.welcomeText}>{today}</Text>
             </View>
+            <ScrollView>
+              <Consumptionsmall/>
+              <Consumptionbutton/>
+              <Consumptiongraph/>
+              
+              <View style = {styles.scrollviewbottom}></View>
+            </ScrollView>
+            
 
-            <Consumptionbutton/>
-               
           </View>
         </ImageBackground>
       </View>
@@ -62,7 +69,7 @@ class ConsumptionPage extends Component {
       welcomeText: {
         paddingTop: 0,
         paddingLeft: 17,
-        paddingBottom: 28,
+        paddingBottom: 6,
         fontFamily: 'LatoBold',
         fontSize: 15,
         color: '#848487'
@@ -78,6 +85,10 @@ class ConsumptionPage extends Component {
         flex: 1,
         flexDirection: 'row',
       },
+      scrollviewbottom: {
+        paddingBottom: 20,
+      },
+      
     });
   
   
