@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, onPress} from 'react-native';
 import { ProgressChart } from 'react-native-chart-kit';
 import { NavigationContainer } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 class Consumptionbutton extends Component {
   render() {
+    //const navigation = useNavigation();
     return(
       <View style = {styles.widgetspacing}>
-        <TouchableOpacity onPress={onPress} style={styles.consumptionContainer}>
+        <View style={styles.consumptionContainer}>
           <View style={styles.consumptionSubContainer}>
               <ProgressChart
                   data={[0.6]}
@@ -36,7 +38,7 @@ class Consumptionbutton extends Component {
             <Text style={styles.consumptionButtonText2}>{'20€'}</Text>
           </View>
           
-        </TouchableOpacity>
+        </View>
 
       </View>  
         

@@ -29,6 +29,10 @@ class ConsumptionPage extends Component {
               <Consumptiongraph/>
               
               <View style = {styles.scrollviewbottom}></View>
+              {/* <Button
+                    title="Test"
+                    onPress={() => this.props.navigation.navigate('DOMO')}
+              /> */}
             </ScrollView>
             
 
@@ -75,7 +79,7 @@ class ConsumptionPage extends Component {
         color: '#848487'
       },
       roomText: {
-        paddingTop: 30,
+        paddingTop: 15,
         paddingLeft: 17,
         fontFamily: 'LatoBold',
         fontSize: 34,

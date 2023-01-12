@@ -21,8 +21,11 @@ class HomePage extends Component {
             <View>
               <Text style = {styles.welcomeText}>Hello Koto</Text>
             </View>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
+              <Consumptionbutton/>
 
-            <Consumptionbutton/>
+            </TouchableOpacity>
+            
 
             <View>
               <Text style = {styles.roomText}>Living Room</Text>
@@ -32,7 +35,6 @@ class HomePage extends Component {
                 <Mediumbutton />
                 <Smallbutton />
                 <Smallbutton />
-                
             </View>
           </View>
         </ImageBackground>
@@ -54,7 +56,7 @@ class HomePage extends Component {
       
       logoContainer: {
         paddingLeft: 17,
-        paddingTop: 15,
+        paddingTop: 20,
         paddingBottom: 11,
         zIndex: 3
       },
