@@ -5,8 +5,13 @@ import Consumptionbutton from '../components/consumptionButton';
 import Consumptiongraph from '../components/consumptiongraph';
 import Consumptionsmall from '../components/consumptionsmall';
 
+
 class ConsumptionPage extends Component {
-    render() {
+    
+  
+  render() {
+      
+      
 
       var today = new Date().toDateString();
       return(
@@ -33,6 +38,8 @@ class ConsumptionPage extends Component {
                     title="Test"
                     onPress={() => this.props.navigation.navigate('DOMO')}
               /> */}
+
+            
             </ScrollView>
             
 
