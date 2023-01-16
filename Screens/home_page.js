@@ -17,7 +17,7 @@ class HomePage extends Component {
   }
 
   async getConsData(){
-    const result = await fetch('http://129.152.26.72:8123/api/history/period/2023-1-16T16:45:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
+    const result = await fetch('http://129.152.26.72:8123/api/history/period/2023-1-16T15:45:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
         "content-type": "application/json",
@@ -46,7 +46,10 @@ class HomePage extends Component {
         </View>
       );
     } else {
+      
+      console.log(this.state.result[0].at(-1).last_changed);
       console.log(this.state.result[0][0].last_updated);
+      console.log(this.state.result[0][0].state);
       return(
         <View style = {styles.root}>
           <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
@@ -56,7 +59,7 @@ class HomePage extends Component {
             <View style = {styles.appContainer}>
               
               <View style = {styles.logoContainer}>
-                <Text>{this.state.result[0][0].last_updated}</Text>
+                
                 <Image source = {require('../assets/Logo.png')} style={styles.logo}/>
               </View>
               <View>
@@ -77,6 +80,8 @@ class HomePage extends Component {
                   <Smallbutton />
                   <Smallbutton />
               </View>
+              <Text>{this.state.result[0].at(-1).last_changed}</Text>
+              <Text>{this.state.result[0].at(-1).state}</Text>
             </View>
           </ImageBackground>
         </View>
