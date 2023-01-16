@@ -32,11 +32,9 @@ class HomePage extends Component {
             </View>
 
             <View style = {styles.widgetRow}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
-                <Mediumbutton />
-            </TouchableOpacity>
-                <Smallbutton />
-                <Smallbutton />
+                <Mediumbutton/>
+                <Smallbutton/>
+                <Smallbutton/>
             </View>
           </View>
         </ImageBackground>
@@ -90,6 +88,7 @@ class HomePage extends Component {
       widgetRow: {
         flex: 1,
         flexDirection: 'row',
+        paddingRight: 10
       },
     });
   

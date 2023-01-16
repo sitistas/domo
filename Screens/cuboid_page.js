@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component, useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, TextInput, Image, ImageBackground, TouchableOpacity, onPress, Dimensions, ScrollView } from 'react-native';
-import Consumptionbutton from '../components/consumptionButton';
+import Cuboidbig from '../components/cuboidbig';
+import MediumbuttonHorizontal from '../components/mediumButtonHorizontal';
 import Consumptiongraph from '../components/consumptiongraph';
-import Consumptionsmall from '../components/consumptionsmall';
 
 class CuboidPage extends Component
 {
@@ -16,19 +16,13 @@ class CuboidPage extends Component
             
             <View style = {styles.appContainer}>
                 
-                <View>
-                <Text style = {styles.roomText}>Consumption</Text>
-                </View>
-                
-                <View>
-                <Text style = {styles.welcomeText}>{today}</Text>
-                </View>
                 <ScrollView>
-                    <Consumptionsmall/>
-                    <Consumptionbutton/>
+                    <Cuboidbig/>
+                    <MediumbuttonHorizontal/>
+                    <View>
+                        <Text style = {styles.roomText}>Device Consumption</Text>
+                    </View>
                     <Consumptiongraph/>
-            
-                
                 </ScrollView>
                 
             </View>
@@ -73,19 +67,28 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#848487'
       },
-      roomText: {
-        paddingTop: 15,
-        paddingLeft: 17,
-        fontFamily: 'LatoBold',
-        fontSize: 34,
-        color: '#000'
-      },
+     
       widgetRow: {
         flex: 1,
         flexDirection: 'row',
       },
       scrollviewbottom: {
         paddingBottom: 20,
+      },
+      mediumWidget: {
+        flex: 1,
+        flexDirection: 'row',
+        background: "#DDE29B",
+        borderRadius: 20,
+        width: 68,
+        height: 158
+      },
+      roomText: {
+        paddingTop: 30,
+        fontFamily: 'LatoBold',
+        fontSize: 34,
+        color: '#000',
+        alignSelf:"center"
       },
       
     });
