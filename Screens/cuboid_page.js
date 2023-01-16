@@ -5,52 +5,42 @@ import Consumptionbutton from '../components/consumptionButton';
 import Consumptiongraph from '../components/consumptiongraph';
 import Consumptionsmall from '../components/consumptionsmall';
 
-
-class ConsumptionPage extends Component {
-    
-  
-  render() {
-
-      var today = new Date().toDateString();
-      return(
-        <View style = {styles.root}>
-        <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
-          <StatusBar style="auto" />
-        
-          <View style = {styles.appContainer}>
+class CuboidPage extends Component
+{
+    render()
+    {
+        return(
+            <View style = {styles.root}>
+            <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
+            <StatusBar style="auto" />
             
-            <View>
-              <Text style = {styles.roomText}>Consumption</Text>
+            <View style = {styles.appContainer}>
+                
+                <View>
+                <Text style = {styles.roomText}>Consumption</Text>
+                </View>
+                
+                <View>
+                <Text style = {styles.welcomeText}>{today}</Text>
+                </View>
+                <ScrollView>
+                    <Consumptionsmall/>
+                    <Consumptionbutton/>
+                    <Consumptiongraph/>
+            
+                
+                </ScrollView>
+                
             </View>
-            
-            <View>
-              <Text style = {styles.welcomeText}>{today}</Text>
-            </View>
-            <ScrollView>
-              <Consumptionsmall/>
-              <Consumptionbutton/>
-              <Consumptiongraph/>
-              
-              <View style = {styles.scrollviewbottom}></View>
-              {/* <Button
-                    title="Test"
-                    onPress={() => this.props.navigation.navigate('DOMO')}
-              /> */}
-
-            
-            </ScrollView>
-            
-
-          </View>
-        </ImageBackground>
-      </View>
-      );
+            </ImageBackground>
+        </View>
+        );
     }
-  }
-  
-  export default ConsumptionPage;
-  
-  const styles = StyleSheet.create({
+}
+
+export default CuboidPage;
+
+const styles = StyleSheet.create({
     root: {
         flex: 1
       }, 
@@ -99,5 +89,3 @@ class ConsumptionPage extends Component {
       },
       
     });
-  
-  

@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { FlatList, Text, View, Button, TextInput, Image, ImageBackground, TouchableOpacity, onPress, Dimensions, ScrollView } from 'react-native';
+import CuboidPage from './Screens/cuboid_page';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -70,6 +71,7 @@ export default function App() {
         }}>
         <Stack.Screen name="DOMO" component={HomePage} />
         <Stack.Screen name="Consumption" component={ConsumptionPage} />
+        <Stack.Screen name="Cuboid" component={CuboidPage}/>
       </Stack.Navigator>
     </NavigationContainer>
     
