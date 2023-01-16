@@ -28,16 +28,8 @@ class ConsumptionPage extends Component {
             </View>
             <ScrollView>
               <Consumptionsmall/>
-              <View style = {styles.scrollviewbottom}></View>
-               { <Button
-                    title="Test"
-                    onPress={() => this.props.navigation.navigate('Cuboid')}
-              />}
               <Consumptionbutton/>
               <Consumptiongraph/>
-              
-              
-
             
             </ScrollView>
             
@@ -94,10 +86,7 @@ class ConsumptionPage extends Component {
       widgetRow: {
         flex: 1,
         flexDirection: 'row',
-      },
-      scrollviewbottom: {
-        paddingBottom: 20,
-      },
+      }
       
     });
   

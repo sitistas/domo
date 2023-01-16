@@ -76,7 +76,9 @@ class HomePage extends Component {
               </View>
 
               <View style = {styles.widgetRow}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
                   <Mediumbutton />
+                </TouchableOpacity>
                   <Smallbutton />
                   <Smallbutton />
               </View>
