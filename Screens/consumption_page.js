@@ -22,7 +22,10 @@ class ConsumptionPage extends Component {
             <View>
               <Text style = {styles.roomText}>Consumption</Text>
             </View>
-            
+            <Button
+            onPress={() => this.props.navigation.navigate('Awards')}
+            title="To awards" />
+
             <View>
               <Text style = {styles.welcomeText}>{today}</Text>
             </View>
@@ -30,9 +33,8 @@ class ConsumptionPage extends Component {
               <Consumptionsmall/>
               <Consumptionbutton/>
               <Consumptiongraph/>
-            
             </ScrollView>
-            
+           
 
           </View>
         </ImageBackground>
