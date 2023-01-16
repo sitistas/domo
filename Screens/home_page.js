@@ -7,39 +7,86 @@ import Consumptionbutton from '../components/consumptionButton';
 
 
 class HomePage extends Component {
-    render() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      result: [],
+      isLoading: true,
+    };
+  }
+
+  async getConsData(){
+    const result = await fetch('http://129.152.26.72:8123/api/history/period/2023-1-16T15:45:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
+        "content-type": "application/json",
+    }});
+    const resultJson = await result.json();
+    return resultJson;
+  }
+  
+  consData = async () => {
+    let result = await this.getConsData();
+    return result;
+  }
+  
+  async componentDidMount() {
+    let result_data = await this.consData();
+    this.setState({ result: result_data, isLoading: false });
+  }
+
+
+  
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <View style = {styles.logoContainer}>
+          <Text>Loading data...</Text>
+        </View>
+      );
+    } else {
+      
+      console.log(this.state.result[0].at(-1).last_changed);
+      console.log(this.state.result[0][0].last_updated);
+      console.log(this.state.result[0][0].state);
       return(
         <View style = {styles.root}>
-        <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
-          <StatusBar style="auto" />
-        
-          <View style = {styles.appContainer}>
+          <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
+            <StatusBar style="auto" />
             
-            <View style = {styles.logoContainer}>
-              <Image source = {require('../assets/Logo.png')} style={styles.logo}/>
-            </View>
-            <View>
-              <Text style = {styles.welcomeText}>Hello Koto</Text>
-            </View>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
-              <Consumptionbutton/>
-
-            </TouchableOpacity>
             
+            <View style = {styles.appContainer}>
+              
+              <View style = {styles.logoContainer}>
+                
+                <Image source = {require('../assets/Logo.png')} style={styles.logo}/>
+              </View>
+              <View>
+                <Text style = {styles.welcomeText}>Hello Koto</Text>
+              </View>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
+                <Consumptionbutton/>
 
-            <View>
-              <Text style = {styles.roomText}>Living Room</Text>
-            </View>
+              </TouchableOpacity>
+              
 
-            <View style = {styles.widgetRow}>
-                <Mediumbutton/>
-                <Smallbutton/>
-                <Smallbutton/>
+              <View>
+                <Text style = {styles.roomText}>Living Room</Text>
+              </View>
+
+              <View style = {styles.widgetRow}>
+                  <Mediumbutton />
+                  <Smallbutton />
+                  <Smallbutton />
+              </View>
+              <Text>{this.state.result[0].at(-1).last_changed}</Text>
+              <Text>{this.state.result[0].at(-1).state}</Text>
             </View>
-          </View>
-        </ImageBackground>
-      </View>
-      );
+          </ImageBackground>
+        </View>
+        );
+      }  
     }
   }
   
