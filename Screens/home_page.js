@@ -19,7 +19,7 @@ class HomePage extends Component {
   }
 
   async getConsData(){
-    const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T02:00:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
+    const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
         "content-type": "application/json",
@@ -56,6 +56,11 @@ class HomePage extends Component {
         wattcons = wattcons + parseFloat(this.state.result[0][i].state) / (minutes*60);
         console.log(wattcons);
       }
+      wattcons = wattcons/1000;
+      global.price = 0.13
+      global.cost = wattcons*global.price;
+      global.montlycost = wattcons*global.price
+      global.wattcons = wattcons.toFixed(2);
       const daysBetween = new Date(this.state.result[0].at(-1).last_changed).getMinutes() - new Date(this.state.result[0].at(-2).last_changed).getMinutes()
       console.log('Diafora ' + daysBetween);
       console.log(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate());
@@ -69,6 +74,7 @@ class HomePage extends Component {
       
       console.log(this.state.result[0].at(-1).state);
       console.log(wattcons);
+      console.log(global.cost.toFixed(2));
       return(
         <View style = {styles.root}>
           <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
@@ -85,7 +91,7 @@ class HomePage extends Component {
                 <Text style = {styles.welcomeText}>Hello Koto</Text>
               </View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
-                <Consumptionbutton/>
+                <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
 
               </TouchableOpacity>
               
@@ -101,8 +107,7 @@ class HomePage extends Component {
                   <Smallbutton />
                   <Smallbutton />
               </View>
-              <Text>{this.state.result[0].at(-1).last_changed}</Text>
-              <Text>{this.state.result[0].at(-1).state}</Text>
+              
             </View>
           </ImageBackground>
         </View>

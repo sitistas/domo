@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, onPress} from 'react-native';
 import { ProgressChart } from 'react-native-chart-kit';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,12 +7,16 @@ import {useNavigation} from '@react-navigation/native';
 class Consumptionbutton extends Component {
   render() {
     //const navigation = useNavigation();
+    var limit = 10;
+    var consData = parseFloat(this.props.ConsValue).toFixed(2)/limit;
+    //console.log(typeof(this.props.ConsValue));
+    if (parseFloat(consData) >=1) {consData = 1}
     return(
       <View style = {styles.widgetspacing}>
         <View style={styles.consumptionContainer}>
           <View style={styles.consumptionSubContainer}>
               <ProgressChart
-                  data={[0.6]}
+                  data={[parseFloat(consData)]}
                   width={158}
                   height={130}
                   strokeWidth={16}
@@ -33,9 +37,9 @@ class Consumptionbutton extends Component {
           </View>
           <View style={styles.consumptionSubContainer}>
             <Text style={styles.consumptionButtonText1}>{'Electricity consumed'}</Text>
-            <Text style={styles.consumptionButtonText2}>{'60/100 kWh'}</Text>
+            <Text style={styles.consumptionButtonText2}>{this.props.ConsValue}/{limit} kWh</Text>
             <Text style={styles.consumptionButtonText1}>{'Electricity bill'}</Text>
-            <Text style={styles.consumptionButtonText2}>{'20€'}</Text>
+            <Text style={styles.consumptionButtonText2}>{this.props.ConsCost}€</Text>
           </View>
           
         </View>
@@ -46,7 +50,13 @@ class Consumptionbutton extends Component {
   }
 }
 
+
+
 export default Consumptionbutton;
+
+// Consumptionbutton.propTypes = {
+//   ConsValue: PropTypes.string.isRequired
+// };
 
 const styles = StyleSheet.create({
     consumptionContainer: {

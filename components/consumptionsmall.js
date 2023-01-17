@@ -25,11 +25,11 @@ class Consumptionsmall extends Component {
             <View style={styles.consumptionSubContainer}>
                 
               <Text style={styles.consumptionButtonText1}>{'Electricity bill'}</Text>
-              <Text style={styles.consumptionButtonText2}>{'100€'}</Text>
+              <Text style={styles.consumptionButtonText2}>{this.props.MonthlyCost}€</Text>
               <Text style={styles.consumptionButtonText1}>Today's cost</Text>
-              <Text style={styles.consumptionButtonText2}>{'20€'}</Text>
+              <Text style={styles.consumptionButtonText2}>{this.props.Cost}€</Text>
               <Text style={styles.consumptionButtonText1}>Today's cost/kWh</Text>
-              <Text style={styles.consumptionButtonText2}>{'0.7€/kWh'}</Text>
+              <Text style={styles.consumptionButtonText2}>{global.price}€/kWh</Text>
            
             </View>
           </View>

@@ -29,13 +29,13 @@ class ConsumptionPage extends Component {
             </View>
             <ScrollView>
               <View style = {styles.widgetRow}>
-                <Consumptionsmall/>
+                <Consumptionsmall MonthlyCost = {global.montlycost.toFixed(2)} Cost = {global.cost.toFixed(2)}/>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Awards')}>
                   <AwardsWidget/>
                 </TouchableOpacity>
                 
               </View>
-              <Consumptionbutton/>
+              <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
               <Consumptiongraph/>
             </ScrollView>
            
