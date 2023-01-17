@@ -19,7 +19,7 @@ class HomePage extends Component {
   }
 
   async getConsData(){
-    const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
+    const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T02:00:00+02:00?filter_entity_id=sensor.pc_energy&minimal_response', {
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
         "content-type": "application/json",
@@ -48,11 +48,27 @@ class HomePage extends Component {
         </View>
       );
     } else {
-      
+      var wattcons = 0;
+      var i;
+      for(i = 1; i < this.state.result[0].length; i++){
+        var minutes = new Date(this.state.result[0][i].last_changed).getMinutes() - new Date(this.state.result[0][i-1].last_changed).getMinutes();
+        if (minutes == 0) {minutes = 1;}
+        wattcons = wattcons + parseFloat(this.state.result[0][i].state) / (minutes*60);
+        console.log(wattcons);
+      }
+      const daysBetween = new Date(this.state.result[0].at(-1).last_changed).getMinutes() - new Date(this.state.result[0].at(-2).last_changed).getMinutes()
+      console.log('Diafora ' + daysBetween);
+      console.log(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate());
       console.log(this.state.result[0]);
+      console.log(this.state.result[0].length);
+      console.log(this.state.result[0][this.state.result[0].length-1]);
+
+
+
       console.log(this.state.result[0].at(-1).last_changed);
       
       console.log(this.state.result[0].at(-1).state);
+      console.log(wattcons);
       return(
         <View style = {styles.root}>
           <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
