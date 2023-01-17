@@ -8,14 +8,18 @@ class Mediumbutton extends Component {
     render() {
     return(
         <View style = {styles.widgetSpacing}>
-            <TouchableOpacity onPress={() => {
-          this.setState({outletSwitch: !this.state.outletSwitch})
-        }} style={this.state.outletSwitch ? styles.mediumWidgetContainerPressed : styles.mediumWidgetContainer}>
+            <View style={this.state.outletSwitch ? styles.mediumWidgetContainerPressed : styles.mediumWidgetContainer}>
                 <View style={styles.mediumWidget}>
                     <Image source = {require('./componentsAssets/DOMOCuboidSmall.png')} style={styles.mediumWidgetImage}/>
-                    <Image source = {this.state.outletSwitch ? require('./componentsAssets/ON_OFF_Green_Pressed.png') : require('./componentsAssets/ON_OFF_Green.png')} style={styles.mediumWidgetSwitch}/>
+                    <TouchableOpacity onPress={() => {
+                      this.setState({outletSwitch: !this.state.outletSwitch})
+                      }}>
+                      
+                      <Image source = {this.state.outletSwitch ? require('./componentsAssets/ON_OFF_Green_Pressed.png') : require('./componentsAssets/ON_OFF_Green.png')} style={styles.mediumWidgetSwitch}/>
+                    </TouchableOpacity>
+                    
                 </View>
-            </TouchableOpacity>
+            </View>
         </View>
     );
   }
