@@ -38,7 +38,6 @@ class HomePage extends Component {
     this.setState({ result: result_data, isLoading: false });
   }
 
-
   
   render() {
     if (this.state.isLoading) {
@@ -78,6 +77,8 @@ class HomePage extends Component {
       console.log(wattcons);
       console.log(global.cost.toFixed(2));
 
+      
+
       //Main 
       return(
         <View style = {styles.root}>
@@ -100,8 +101,8 @@ class HomePage extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
                   <Mediumbutton />
                 </TouchableOpacity>
-                  <Smallbutton />
-                  <Smallbutton />
+                  <Smallbutton MACadd = '00'/>
+                  <Smallbutton MACadd = '124B00040A82B8'/>
               </View>
             </View>
           </ImageBackground>

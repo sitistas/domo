@@ -37,6 +37,7 @@ class ConsumptionPage extends Component {
               </View>
               <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
               <Consumptiongraph Consumption = {global.TodayConsumption}/>
+              <View style = {styles.bottomgap}></View>
             </ScrollView>
            
 
@@ -92,6 +93,9 @@ class ConsumptionPage extends Component {
       widgetRow: {
         flex: 1,
         flexDirection: 'row',
+      }, 
+      bottomgap: {
+        paddingBottom: 20
       }
       
     });

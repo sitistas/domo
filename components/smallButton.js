@@ -7,6 +7,40 @@ class Smallbutton extends Component {
 
   render() {
     
+    var ws = new WebSocket('ws://sitistas.hopto.org:2014');
+
+      ws.onopen = () => {
+        ws.send('ReportStates');
+      }
+
+      ws.onmessage = e => {
+        // a message was received
+        console.log(e.data);
+      };
+    
+      ws.onerror = e => {
+        // an error occurred
+        console.log(e.message);
+      };
+    
+      ws.onclose = e => {
+        // connection closed
+        console.log(e.code, e.reason);
+      };
+
+      if (this.state.outletSwitch)
+      {
+        ws.onopen = () => {
+          ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+      }
+      else
+      {
+        ws.onopen = () => {
+          ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+      }
+
 
     return(
       <View style = {styles.widgetSpacing}>

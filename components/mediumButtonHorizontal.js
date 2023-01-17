@@ -18,7 +18,7 @@ class MediumbuttonHorizontal extends Component {
                 <Text style={styles.mediumText3}>{'140 Wh ~ 0.1€'}</Text>
               </View>
               <View style = {styles.smallWidget}>
-                <Smallbutton/>
+                <Smallbutton MACadd = '124B00040A82B8'/>
               </View>
             </View>
 
@@ -29,7 +29,7 @@ class MediumbuttonHorizontal extends Component {
                 <Text style={styles.mediumText3}>{'800 Wh ~ 0.5€'}</Text>
               </View>
               <View style = {styles.smallWidget}>
-                <Smallbutton/>
+                <Smallbutton MACadd = '124B00040A82B8'/>
               </View>
             </View>
 
