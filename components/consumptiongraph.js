@@ -5,7 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 
 class Consumptiongraph extends Component {
   render() {
-    const data1= [20, 45, 28, 80, 60]
+    
+    var todCons = this.props.Consumption;
+
+    const data1= [20, 45, 28, 80, 60,10,20, 45, 28, 80, 60,10,20, 45, 28, 80, 60,10,20, 45, 28, 80, 60,10]
     const data = {
         labels: ["00:00", "06:00", "12:00", "18:00", "23:59"],
         datasets: [

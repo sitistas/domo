@@ -36,7 +36,7 @@ class ConsumptionPage extends Component {
                 
               </View>
               <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
-              <Consumptiongraph/>
+              <Consumptiongraph Consumption = {global.TodayConsumption}/>
             </ScrollView>
            
 

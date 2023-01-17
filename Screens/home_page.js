@@ -8,7 +8,7 @@ import Consumptionbutton from '../components/consumptionButton';
 
 class HomePage extends Component {
    
-  
+  //communicate with server
   constructor(props) {
     super(props);
 
@@ -48,6 +48,7 @@ class HomePage extends Component {
         </View>
       );
     } else {
+      //calculate today's consumption
       var wattcons = 0;
       var i;
       for(i = 1; i < this.state.result[0].length; i++){
@@ -57,34 +58,33 @@ class HomePage extends Component {
         console.log(wattcons);
       }
       wattcons = wattcons/1000;
-      global.price = 0.13
+      
+      //Global variables
+      global.price = 0.132
       global.cost = wattcons*global.price;
       global.montlycost = wattcons*global.price
       global.wattcons = wattcons.toFixed(2);
+      global.TodayConsumption = this.state.result[0];
+      
+      //Console log
       const daysBetween = new Date(this.state.result[0].at(-1).last_changed).getMinutes() - new Date(this.state.result[0].at(-2).last_changed).getMinutes()
       console.log('Diafora ' + daysBetween);
       console.log(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate());
-      console.log(this.state.result[0]);
+      console.log(global.TodayConsumption);
       console.log(this.state.result[0].length);
       console.log(this.state.result[0][this.state.result[0].length-1]);
-
-
-
       console.log(this.state.result[0].at(-1).last_changed);
-      
       console.log(this.state.result[0].at(-1).state);
       console.log(wattcons);
       console.log(global.cost.toFixed(2));
+
+      //Main 
       return(
         <View style = {styles.root}>
           <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
             <StatusBar style="auto" />
-            
-            
             <View style = {styles.appContainer}>
-              
               <View style = {styles.logoContainer}>
-                
                 <Image source = {require('../assets/Logo.png')} style={styles.logo}/>
               </View>
               <View>
@@ -92,14 +92,10 @@ class HomePage extends Component {
               </View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
                 <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
-
               </TouchableOpacity>
-              
-
               <View>
                 <Text style = {styles.roomText}>Living Room</Text>
               </View>
-
               <View style = {styles.widgetRow}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
                   <Mediumbutton />
@@ -107,7 +103,6 @@ class HomePage extends Component {
                   <Smallbutton />
                   <Smallbutton />
               </View>
-              
             </View>
           </ImageBackground>
         </View>
