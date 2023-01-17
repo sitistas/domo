@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput, Image, ImageBackground, Touc
 import Consumptionbutton from '../components/consumptionButton';
 import Consumptiongraph from '../components/consumptiongraph';
 import Consumptionsmall from '../components/consumptionsmall';
-
+import AwardsWidget from '../components/AwardsWidget';
 
 class ConsumptionPage extends Component {
     
@@ -22,15 +22,19 @@ class ConsumptionPage extends Component {
             <View>
               <Text style = {styles.roomText}>Consumption</Text>
             </View>
-            <Button
-            onPress={() => this.props.navigation.navigate('Awards')}
-            title="To awards" />
+            
 
             <View>
               <Text style = {styles.welcomeText}>{today}</Text>
             </View>
             <ScrollView>
-              <Consumptionsmall/>
+              <View style = {styles.widgetRow}>
+                <Consumptionsmall/>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Awards')}>
+                  <AwardsWidget/>
+                </TouchableOpacity>
+                
+              </View>
               <Consumptionbutton/>
               <Consumptiongraph/>
             </ScrollView>
