@@ -15,17 +15,17 @@ class Smallbutton extends Component {
 
       ws.onmessage = e => {
         // a message was received
-        console.log(e.data);
+        //console.log(e.data);
       };
     
       ws.onerror = e => {
         // an error occurred
-        console.log(e.message);
+        //console.log(e.message);
       };
     
       ws.onclose = e => {
         // connection closed
-        console.log(e.code, e.reason);
+        //console.log(e.code, e.reason);
       };
 
       if (this.state.outletSwitch)

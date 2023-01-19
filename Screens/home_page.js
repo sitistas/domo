@@ -62,7 +62,7 @@ class HomePage extends Component {
       global.price = 0.132
       global.cost = wattcons*global.price;
       global.montlycost = wattcons*global.price
-      global.wattcons = wattcons.toFixed(2);
+      global.wattcons = wattcons;
       global.TodayConsumption = this.state.result[0];
       
       //Console log
@@ -92,7 +92,7 @@ class HomePage extends Component {
                 <Text style = {styles.welcomeText}>Hello Koto</Text>
               </View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Consumption')}>
-                <Consumptionbutton ConsValue = {global.wattcons} ConsCost = {global.cost.toFixed(2)}/>
+                <Consumptionbutton ConsValue = {global.wattcons.toFixed(2)} ConsCost = {global.cost.toFixed(2)}/>
               </TouchableOpacity>
               <View>
                 <Text style = {styles.roomText}>Living Room</Text>
@@ -102,7 +102,8 @@ class HomePage extends Component {
                   <Mediumbutton />
                 </TouchableOpacity>
                   <Smallbutton MACadd = '00'/>
-                  <Smallbutton MACadd = '124B00040A82B8'/>
+                  <Smallbutton MACadd = '00'/>
+                  {/* 124B00040A82B8 */}
               </View>
             </View>
           </ImageBackground>

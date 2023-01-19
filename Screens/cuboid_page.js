@@ -22,7 +22,7 @@ class CuboidPage extends Component
                     <View>
                         <Text style = {styles.roomText}>Device Consumption</Text>
                     </View>
-                    <Consumptiongraph/>
+                    <Consumptiongraph Consumption = {global.TodayConsumption} ConsValue = {global.wattcons}/>
                 </ScrollView>
                 
             </View>
