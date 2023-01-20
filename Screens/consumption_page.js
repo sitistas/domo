@@ -35,7 +35,7 @@ class ConsumptionPage extends Component {
                 </TouchableOpacity>
                 
               </View>
-              <Consumptionbutton ConsValue = {global.wattcons.toFixed(2)} ConsCost = {global.cost.toFixed(2)}/>
+              <Consumptionbutton ConsValue = {global.wattcons.toFixed(2)} ConsValueMonth = {global.wattconsMonth.toFixed(2)} ConsCost = {global.montlycost.toFixed(2)} limit = {global.limit}/>
               <Consumptiongraph Consumption = {global.TodayConsumption} ConsValue = {global.wattcons}/>
               <View style = {styles.bottomgap}></View>
             </ScrollView>

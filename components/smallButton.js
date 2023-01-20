@@ -2,50 +2,53 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, onPress} from 'react-native';
 
 
+
 class Smallbutton extends Component {
   state = {outletSwitch: false};
 
   render() {
     
-    var ws = new WebSocket('ws://sitistas.hopto.org:2014');
-
-      ws.onopen = () => {
-        ws.send('ReportStates');
-      }
-
+    var ws = new WebSocket('ws://192.168.2.7:2014');
+    ws.onopen = () => {
+      
+      var temp;
+      
+      ws.send('ReportStates')
+      
       ws.onmessage = e => {
-        // a message was received
-        //console.log(e.data);
-      };
-    
-      ws.onerror = e => {
-        // an error occurred
-        //console.log(e.message);
-      };
-    
-      ws.onclose = e => {
-        // connection closed
-        //console.log(e.code, e.reason);
-      };
+        
+        if (e.data[0] == 'P'){
+          temp = JSON.parse(e.data.slice(10,e.data.length));
+          
 
-      if (this.state.outletSwitch)
-      {
-        ws.onopen = () => {
+          if (temp.xMAC == this.props.MACadd){
+            this.state.outletSwitch = temp.IsOn;
+            console.log(temp.xMAC, this.state.outletSwitch );
+          }
+        }
+      }; 
+      
+        if (this.state.outletSwitch)
+        {
           ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
         }
-      }
-      else
-      {
-        ws.onopen = () => {
+        else
+        {
           ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
         }
-      }
+        
+    } 
 
+    
 
+    
     return(
       <View style = {styles.widgetSpacing}>
         <TouchableOpacity onPress={() => {
-          this.setState({outletSwitch: !this.state.outletSwitch})
+          
+          this.setState({outletSwitch: !this.state.outletSwitch}
+            
+            )
         }} style={ this.state.outletSwitch ? styles.smallWidgetContainerPressed : styles.smallWidgetContainer}>
             <View style={styles.smallmWidget}>
               <Image source = {this.state.outletSwitch ? require('./componentsAssets/OutletImageDark.png') : require('./componentsAssets/OutletImage.png')} style={styles.smallWidgetImage}/>
@@ -53,6 +56,10 @@ class Smallbutton extends Component {
         </TouchableOpacity>
       </View>
     );
+    
+      
+
+    
   }
 }
 

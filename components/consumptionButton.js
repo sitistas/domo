@@ -7,8 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 class Consumptionbutton extends Component {
   render() {
     //const navigation = useNavigation();
-    var limit = 10;
-    var consData = parseFloat(this.props.ConsValue).toFixed(2)/limit;
+    var consData = parseFloat(this.props.ConsValue).toFixed(2)/this.props.limit;
     //console.log(typeof(this.props.ConsValue));
     if (parseFloat(consData) >=1) {consData = 1}
     return(
@@ -37,7 +36,10 @@ class Consumptionbutton extends Component {
           </View>
           <View style={styles.consumptionSubContainer}>
             <Text style={styles.consumptionButtonText1}>{'Electricity consumed'}</Text>
-            <Text style={styles.consumptionButtonText2}>{this.props.ConsValue}/{limit} kWh</Text>
+            <Text style={styles.consumptionButtonText1}>{'Today'}</Text>
+            <Text style={styles.consumptionButtonText2}>{this.props.ConsValue}/{this.props.limit} kWh</Text>
+            <Text style={styles.consumptionButtonText1}>{'This month'}</Text>
+            <Text style={styles.consumptionButtonText2}>{this.props.ConsValueMonth}kWh</Text>
             <Text style={styles.consumptionButtonText1}>{'Electricity bill'}</Text>
             <Text style={styles.consumptionButtonText2}>{this.props.ConsCost}€</Text>
           </View>
@@ -73,13 +75,13 @@ const styles = StyleSheet.create({
         flexDirection: 'collumn'
       },
       consumptionButtonText1: {
-        paddingTop: 10,
+        paddingTop: 0,
         fontSize: 15,
         color: "#000",
         fontFamily: 'LatoBold'
       },
       consumptionButtonText2: {
-        paddingBottom: 10,
+        paddingBottom: 2,
         fontSize: 15,
         color: "#9AA049",
         fontFamily: 'LatoBold'

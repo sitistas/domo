@@ -33,134 +33,261 @@ class Consumptiongraph extends Component {
     var time23=0;
     var time24=0;
     var i;
+    var j;
+      
+    for (j = 0; j < todCons.length; j++){
+      
+      for(i = 1; i < todCons[j].length; i++){
+        //check if hour is between 
+        if (new Date(todCons[j][i].last_changed).getHours() == 0){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time01 = time01 + parseFloat(temp3)*1000 ;
+          
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 1){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time02 = time02 + parseFloat(temp3)*1000 ;
+          
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 2){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time03 = time03 + parseFloat(temp3)*1000 ;
+          
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 3){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time04 = time04 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 4){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time05 = time05 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 5){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time06 = time06 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 6){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time07 = time07 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 7){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time08 = time08 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 8){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time09 = time09 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 9){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time10 = time10 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 10){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time11 = time11 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 11){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time12 = time12 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 12){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = (parseFloat(temp1)-parseFloat(temp2));
+          time13 = time13 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 13){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time14 = time14 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 14){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time15 = time15 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 15){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time16 = time16 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 16){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time17 = time17 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 17){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time18 = time18 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 18){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time19 = time19 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 19){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time20 = time20 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 20){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time21 = time21 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 21){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time22 = time22 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 22){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time23 = time23 + parseFloat(temp3)*1000 ;
+        }
+        if (new Date(todCons[j][i].last_changed).getHours() == 23){
+          var temp1 = todCons[j][i].state;
+          var temp2 = todCons[j][i-1].state;
+          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(!temp1){temp1 = 0; temp2 = 0}
+          if(!temp2){temp1 = 0; temp2 = 0;}
+          var temp3 = parseFloat(temp1)-parseFloat(temp2);
+          time24 = time24 + parseFloat(temp3)*1000 ;
+        }
 
-    for(i = 1; i < todCons.length; i++){
-      //check if hour is between 
-      if (new Date(todCons[i].last_changed).getHours() == 0){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time01 = time01 + parseFloat(todCons[i].state) / (minutes*60);
       }
-      if (new Date(todCons[i].last_changed).getHours() == 1){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time02 = time02 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 2){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time03 = time03 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 3){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time04 = time04 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 4){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time05 = time05 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 5){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time06 = time06 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 6){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time07 = time07 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 7){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time08 = time08 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 8){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time09 = time09 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 9){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time10 = time10 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 10){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time11 = time11 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 11){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time12 = time12 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 12){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time13 = time13 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 13){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time14 = time14 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 14){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time15 = time15 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 15){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time16 = time16 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 16){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time17 = time17 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 17){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time18 = time18 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 18){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time19 = time19 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 19){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time20 = time20 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 20){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time21 = time21 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 21){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time22 = time22 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 22){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time23 = time23 + parseFloat(todCons[i].state) / (minutes*60);
-      }
-      if (new Date(todCons[i].last_changed).getHours() == 23){
-        var minutes = new Date(todCons[i].last_changed).getMinutes() - new Date(todCons[i-1].last_changed).getMinutes();
-        if (minutes == 0) {minutes = 1;}
-        time24 = time24 + parseFloat(todCons[i].state) / (minutes*60);
-      }
+
     }
+      
 
-    const data1= [time01.toFixed(2), time02.toFixed(2), time03.toFixed(2), time04.toFixed(2), time05.toFixed(2), time06.toFixed(2), time07.toFixed(2), time08.toFixed(2), time09.toFixed(2),
-       time10.toFixed(2), time11.toFixed(2), time12.toFixed(2), time13.toFixed(2), time14.toFixed(2), time15.toFixed(2), time16.toFixed(2), time17.toFixed(2), time18.toFixed(2), time19.toFixed(2),
-       time20.toFixed(2), time21.toFixed(2), time22.toFixed(2), time23.toFixed(2), time24.toFixed(2)]
+    const data1= [time01,
+      time02,
+      time03,
+      time04,
+      time05,
+      time06,
+      time07,
+      time08,
+      time09,
+      time10,
+      time11,
+      time12,
+      time13,
+      time14,
+      time15,
+      time16,
+      time17,
+      time18,
+      time19,
+      time20,
+      time21,
+      time22,
+      time23,
+      time24,]
     const data = {
         labels: ["01:00", "     06:00", "        12:00", "           18:00", "                23:59"],
         datasets: [
