@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, TouchableOpacity, onPress, RefreshControl} fro
 
 
 class Smallbutton extends Component {
-  state = {outletSwitch: 'wait'};
+  state = {outletSwitch: this.props.InState};
   
 
 
@@ -15,29 +15,8 @@ class Smallbutton extends Component {
     var ws = new WebSocket('ws://192.168.2.7:2014');
     ws.onopen = () => {
       console.log('opened');
-      var temp;
       
-      ws.send('ReportStates')
       
-      ws.onmessage = e => {
-        
-        if (e.data[0] == 'P'){
-          temp = JSON.parse(e.data.slice(10,e.data.length));
-          
-
-          if (temp.xMAC == this.props.MACadd){
-            this.state.outletSwitch = temp.IsOn;
-            //this.state.isLoading = false;
-            //var result = temp.IsOn;
-            console.log(temp.xMAC, this.state.outletSwitch );
-            
-          }
-        }
-      }; 
-      if (this.state.outletSwitch == 'wait'){
-        
-      }
-      else{
         if (this.state.outletSwitch)
         {
           ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
@@ -47,7 +26,7 @@ class Smallbutton extends Component {
           ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
         }
       
-      }
+      
         
     } 
 

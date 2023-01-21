@@ -17,6 +17,13 @@ class HomePage extends Component {
       isLoading: true,
       resultMonth: [],
       isLoadingMonth: true,
+      outlets: {
+        xMAC1: '124B0002CC7EF6', 
+        state1: false,
+        xMAC2: '124B0002CC81B5', 
+        state2: false,
+        xMAC3: '124B0002CC92BA', 
+        state3: false}
     };
   }
 
@@ -66,6 +73,67 @@ class HomePage extends Component {
   }
   
   render() {
+    
+    // var outlet1 = {
+    //   xMAC1: '124B0002CC7EF6', 
+    //   state1: false
+    // }
+    // var outlet2 = {
+    //   xMAC2: '124B0002CC81B5', 
+    //   state2: false
+    // }
+    // var outlet3 = {
+    //   xMAC3: '124B0002CC92BA', 
+    //   state3: false
+    // }
+    
+    var ws = new WebSocket('ws://192.168.2.7:2014');
+    ws.onopen = () => {
+      console.log('opened');
+      var temp;
+      
+      ws.send('ReportStates')
+      
+      ws.onmessage = e => {
+        
+        if (e.data[0] == 'P'){
+          temp = JSON.parse(e.data.slice(10,e.data.length));
+          
+
+          if (temp.xMAC == this.state.outlets.xMAC1){
+            this.state.outlets.state1 = temp.IsOn;
+            //this.state.isLoading = false;
+            //var result = temp.IsOn;
+            console.log(temp.xMAC, this.state.outlets.state1);
+            
+          }
+          if (temp.xMAC == this.state.outlets.xMAC2){
+            this.state.outlets.state2 = temp.IsOn;
+            //this.state.isLoading = false;
+            //var result = temp.IsOn;
+            console.log(temp.xMAC, this.state.outlets.state2);
+            
+          }
+          if (temp.xMAC == this.state.outlets.xMAC3){
+            this.state.outlets.state3 = temp.IsOn;
+            //this.state.isLoading = false;
+            //var result = temp.IsOn;
+            console.log(temp.xMAC, this.state.outlets.state3);
+            
+          }
+        }
+      };         
+    } 
+    
+    ws.onclose = e => {
+      // connection closed
+      //console.log(e.code, e.reason);
+    };
+    
+    
+    
+    
+    
     if (this.state.isLoading || this.state.isLoadingMonth) {
       return (
         <View style = {styles.logoContainer}>
@@ -116,15 +184,17 @@ class HomePage extends Component {
       global.wattconsMonth = wattconsMonth;
       global.TodayConsumption = this.state.result;
       global.limit = 2;
+      global.outlets = this.state.outlets;
       
       //Console log
+
       //console.log(wattconsMonth);
       // const daysBetween = new Date(this.state.result[0].at(-1).last_changed).getMinutes() - new Date(this.state.result[0].at(-2).last_changed).getMinutes()
       // console.log('Diafora ' + daysBetween);
       // console.log(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate());
       // console.log(global.TodayConsumption);
       // console.log(this.state.result[0].length);
-      console.log(this.state.result);
+      console.log(global.outlets);
       // console.log(this.state.result[0][this.state.result[0].length-1]);
       // console.log(this.state.result[0].at(-1).last_changed);
       // console.log(this.state.result[0].at(-1).state);
@@ -155,9 +225,9 @@ class HomePage extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
                   <Mediumbutton />
                 </TouchableOpacity>
-                  <Smallbutton MACadd = '124B0002CC7EF6'/>
-                  <Smallbutton MACadd = '124B0002CC81B5'/>
-                  <Smallbutton MACadd = '124B0002CC92BA'/>
+                  <Smallbutton MACadd = {this.state.outlets.xMAC1} InState = {this.state.outlets.state1}/>
+                  <Smallbutton MACadd = {this.state.outlets.xMAC2} InState = {this.state.outlets.state2}/>
+                  <Smallbutton MACadd = {this.state.outlets.xMAC3} InState = {this.state.outlets.state3}/>
               </View>
             </View>
           </ImageBackground>
