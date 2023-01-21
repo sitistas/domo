@@ -7,7 +7,20 @@ import Consumptiongraph from '../components/consumptiongraph';
 
 class CuboidPage extends Component
 {
-    render()
+  componentScreenDidMount() {
+    this.props.fetchData();
+    this.willFocusSubscription = this.props.navigation.addListener(
+      'DOMO',
+      () => {
+        this.props.fetchData();
+      }
+    );
+  }
+
+  componentScreenWillUnmount() {
+    this.willFocusSubscription();
+  }
+  render()
     {
         return(
             <View style = {styles.root}>
@@ -22,7 +35,8 @@ class CuboidPage extends Component
                     <View>
                         <Text style = {styles.roomText}>Device Consumption</Text>
                     </View>
-                    <Consumptiongraph Consumption = {global.TodayConsumption} ConsValue = {global.wattcons}/>
+                    <Consumptiongraph Consumption = {global.TodayConsumption.slice(0,1)} ConsValue = {global.wattcons}/>
+                    <View style = {styles.bottomgap}></View>
                 </ScrollView>
                 
             </View>
@@ -90,5 +104,8 @@ const styles = StyleSheet.create({
         color: '#000',
         alignSelf:"center"
       },
+      bottomgap: {
+        paddingBottom: 20
+      }
       
     });

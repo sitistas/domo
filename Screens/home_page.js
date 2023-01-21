@@ -23,9 +23,19 @@ class HomePage extends Component {
         xMAC2: '124B0002CC81B5', 
         state2: false,
         xMAC3: '124B0002CC92BA', 
-        state3: false}
+        state3: false},
+      lastRefresh: Date(Date.now()).toString(),
     };
+    this.refreshScreen = this.refreshScreen.bind(this)
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   }
+  
+  refreshScreen() {
+    this.setState({ lastRefresh: Date(Date.now()).toString() })
+  }
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
 
   async getConsData(){
     const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
@@ -71,6 +81,21 @@ class HomePage extends Component {
     let result_dataMonth = await this.consDataMonth();
     this.setState({ result: result_data, isLoading: false, resultMonth: result_dataMonth, isLoadingMonth: false });
   }
+
+  componentScreenDidMount() {
+    this.props.fetchData();
+    this.willFocusSubscription = this.props.navigation.addListener(
+      'Cuboid',
+      () => {
+        this.props.fetchData();
+      }
+    );
+  }
+
+  componentScreenWillUnmount() {
+    this.willFocusSubscription();
+  }
+  
   
   render() {
     
@@ -86,6 +111,7 @@ class HomePage extends Component {
     //   xMAC3: '124B0002CC92BA', 
     //   state3: false
     // }
+    
     
     var ws = new WebSocket('ws://192.168.2.7:2014');
     ws.onopen = () => {
@@ -131,6 +157,8 @@ class HomePage extends Component {
     };
     
     
+
+
     
     
     
@@ -229,6 +257,7 @@ class HomePage extends Component {
                   <Smallbutton MACadd = {this.state.outlets.xMAC2} InState = {this.state.outlets.state2}/>
                   <Smallbutton MACadd = {this.state.outlets.xMAC3} InState = {this.state.outlets.state3}/>
               </View>
+              <Text>Last Refresh: {this.state.lastRefresh}</Text>
             </View>
           </ImageBackground>
         </View>
