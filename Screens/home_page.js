@@ -23,19 +23,27 @@ class HomePage extends Component {
         xMAC2: '124B0002CC81B5', 
         state2: false,
         xMAC3: '124B0002CC92BA', 
-        state3: false},
-      lastRefresh: Date(Date.now()).toString(),
+        state3: false,
+        xMAC4: '124B00040A82B8', 
+        state4: false},
+      // date: new Date()
     };
-    this.refreshScreen = this.refreshScreen.bind(this)
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  
   }
   
-  refreshScreen() {
-    this.setState({ lastRefresh: Date(Date.now()).toString() })
-  }
-  forceUpdateHandler(){
-    this.forceUpdate();
-  };
+
+
+
+  // componentWillUnmount() {
+  //     clearInterval(this.timerID);
+  //     //this.willFocusSubscription();
+  //   }
+    
+  //   tick() {
+  //     this.setState({
+  //       date: new Date()
+  //     });
+  //   }
 
   async getConsData(){
     const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
@@ -52,10 +60,10 @@ class HomePage extends Component {
     return result;
   }
   
-  async componentDidMount() {
-    let result_data = await this.consData();
-    this.setState({ result: result_data, isLoading: false });
-  }
+  // async componentDidMount() {
+  //   let result_data = await this.consData();
+  //   this.setState({ result: result_data, isLoading: false });
+  // }
 
   
   async getConsDataMonth(){
@@ -80,21 +88,23 @@ class HomePage extends Component {
     let result_data = await this.consData();
     let result_dataMonth = await this.consDataMonth();
     this.setState({ result: result_data, isLoading: false, resultMonth: result_dataMonth, isLoadingMonth: false });
+    // this.timerID = setInterval(
+    //   () => this.tick(),
+    //   5000
+    // );
+
+    // this.props.fetchData();
+    // this.willFocusSubscription = this.props.navigation.addListener(
+    //   'Cuboid',
+    //   () => {
+    //     this.props.fetchData();
+    //   }
+    // );
   }
 
-  componentScreenDidMount() {
-    this.props.fetchData();
-    this.willFocusSubscription = this.props.navigation.addListener(
-      'Cuboid',
-      () => {
-        this.props.fetchData();
-      }
-    );
-  }
+  
 
-  componentScreenWillUnmount() {
-    this.willFocusSubscription();
-  }
+  
   
   
   render() {
@@ -127,14 +137,16 @@ class HomePage extends Component {
           
 
           if (temp.xMAC == this.state.outlets.xMAC1){
-            this.state.outlets.state1 = temp.IsOn;
+            if (temp.lastSeen == 0){this.state.outlets.state1 = temp.IsOn;}
+            else {this.state.outlets.state1 = false}
             //this.state.isLoading = false;
             //var result = temp.IsOn;
             console.log(temp.xMAC, this.state.outlets.state1);
             
           }
           if (temp.xMAC == this.state.outlets.xMAC2){
-            this.state.outlets.state2 = temp.IsOn;
+            if (temp.lastSeen == 0){this.state.outlets.state2 = temp.IsOn;}
+            else {this.state.outlets.state2 = false}
             //this.state.isLoading = false;
             //var result = temp.IsOn;
             console.log(temp.xMAC, this.state.outlets.state2);
@@ -145,6 +157,13 @@ class HomePage extends Component {
             //this.state.isLoading = false;
             //var result = temp.IsOn;
             console.log(temp.xMAC, this.state.outlets.state3);
+            
+          }
+          if (temp.xMAC == this.state.outlets.xMAC4){
+            this.state.outlets.state4 = temp.IsOn;
+            //this.state.isLoading = false;
+            //var result = temp.IsOn;
+            console.log(temp.xMAC, this.state.outlets.state4);
             
           }
         }
@@ -251,13 +270,15 @@ class HomePage extends Component {
               </View>
               <View style = {styles.widgetRow}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Cuboid')}>
-                  <Mediumbutton />
+                  <Mediumbutton MACadd = {this.state.outlets.xMAC4} InState = {this.state.outlets.state4}/>
                 </TouchableOpacity>
-                  <Smallbutton MACadd = {this.state.outlets.xMAC1} InState = {this.state.outlets.state1}/>
-                  <Smallbutton MACadd = {this.state.outlets.xMAC2} InState = {this.state.outlets.state2}/>
-                  <Smallbutton MACadd = {this.state.outlets.xMAC3} InState = {this.state.outlets.state3}/>
+                  <Smallbutton MACadd = {this.state.outlets.xMAC1} InState = {this.state.outlets.state1} />
+                  <Smallbutton MACadd = {this.state.outlets.xMAC2} InState = {this.state.outlets.state2} />
+                  <Smallbutton MACadd = {this.state.outlets.xMAC3} InState = {this.state.outlets.state3} />
+                  
               </View>
-              <Text>Last Refresh: {this.state.lastRefresh}</Text>
+              {/* <Smallbutton MACadd = {this.state.outlets.xMAC4} InState = {this.state.outlets.state4} Date = {this.state.date.toLocaleTimeString()}/> */}
+              
             </View>
           </ImageBackground>
         </View>

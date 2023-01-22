@@ -26,6 +26,7 @@ class AwardsPage extends Component {
 
             <ScrollView>
               <Awardbig Award = {global.wattcons}/>
+              
             </ScrollView>
            
 

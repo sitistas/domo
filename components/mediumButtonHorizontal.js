@@ -3,59 +3,16 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, onPress} from 'react-n
 import Smallbutton from './smallButton';
 
 class MediumbuttonHorizontal extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: true,
-      outlets: {
-        xMAC1: '124B0002CC7EF6', 
-        state1: false,
-        xMAC2: '124B0002CC81B5', 
-        state2: false,
-        xMAC3: '124B0002CC92BA', 
-        state3: false}
-    };
-  }
+  
 
   render() {
 
-    var ws = new WebSocket('ws://192.168.2.7:2014');
-    ws.onopen = () => {
-      console.log('opened');
-      var temp;
-      
-      ws.send('ReportStates')
-      
-      ws.onmessage = e => {
-        
-        if (e.data[0] == 'P'){
-          temp = JSON.parse(e.data.slice(10,e.data.length));
-          
-
-          if (temp.xMAC == this.state.outlets.xMAC1){
-            this.state.outlets.state1 = temp.IsOn;
-            //this.state.isLoading = false;
-            //var result = temp.IsOn;
-            console.log(temp.xMAC, this.state.outlets.state1);
-            
-          }
-          if (temp.xMAC == this.state.outlets.xMAC2){
-            this.state.outlets.state2 = temp.IsOn;
-            //this.state.isLoading = false;
-            //var result = temp.IsOn;
-            console.log(temp.xMAC, this.state.outlets.state2);
-            
-          }
-          
-        }
-      };         
-    } 
     
-    ws.onclose = e => {
-      // connection closed
-      //console.log(e.code, e.reason);
-    };
+
+    var cons1=this.props.Consume1*1000;
+    var val1=this.props.Val1;
+    var cons2=this.props.Consume2*1000;
+    var val2=this.props.Val2;
 
 
     return(
@@ -65,9 +22,9 @@ class MediumbuttonHorizontal extends Component {
 
             <View style={styles.mediumWidgetContainer}>
               <View style={styles.mediumWidgetSubContainer}>
-                <Text style={styles.mediumText1}>{'1.'}</Text>
-                <Text style={styles.mediumText2}>{'Last session'}</Text>
-                <Text style={styles.mediumText3}>{'140 Wh ~ 0.1€'}</Text>
+                <Text style={styles.mediumText2}>{"Cons. today"}</Text>
+                <Text style={styles.mediumText3}>{cons1.toFixed(2)+"Wh"}</Text>
+                <Text style={styles.mediumText3}>{val1.toFixed(4)+"€"}</Text>
               </View>
               <View style = {styles.smallWidget}>
               <Smallbutton MACadd = {global.outlets.xMAC1} InState = {global.outlets.state1}/>
@@ -76,9 +33,9 @@ class MediumbuttonHorizontal extends Component {
 
             <View style={styles.mediumWidgetContainer}>
               <View style={styles.mediumWidgetSubContainer}>
-                <Text style={styles.mediumText1}>{'2.'}</Text>
-                <Text style={styles.mediumText2}>{'Last session'}</Text>
-                <Text style={styles.mediumText3}>{'800 Wh ~ 0.5€'}</Text>
+                <Text style={styles.mediumText2}>{"Cons. today"}</Text>
+                <Text style={styles.mediumText3}>{cons2.toFixed(2)+"Wh"}</Text>
+                <Text style={styles.mediumText3}>{val2.toFixed(4)+"€"}</Text>
               </View>
               <View style = {styles.smallWidget}>
               <Smallbutton MACadd = {global.outlets.xMAC2} InState = {global.outlets.state2}/>
@@ -128,7 +85,6 @@ const styles = StyleSheet.create({
         fontFamily: 'LatoRegular'
       },
       mediumText3: {
-        paddingBottom: 10,
         fontSize: 12,
         color: "#9AA049",
         fontFamily: 'LatoRegular'

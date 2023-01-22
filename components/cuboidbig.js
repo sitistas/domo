@@ -2,16 +2,41 @@ import React, { Component } from 'react';
 import { StyleSheet, Text,Image, View, TouchableOpacity, onPress} from 'react-native';
 
 class Cuboidbig extends Component {
-    state = {outletSwitch: false};
-    render() {
-    
+  state = {outletSwitch: this.props.InState};
+  render() {
+  
+    var tcons= this.props.TCons;
+    var tval= this.props.TVal;
+    var ws = new WebSocket('ws://192.168.2.7:2014');
+    ws.onopen = () => {
+      console.log('opened');
+      
+      
+        if (this.state.outletSwitch)
+        {
+          ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+        else
+        {
+          ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+      
+      
+        
+    } 
+
+    ws.onclose = e => {
+      // connection closed
+      //console.log(e.code, e.reason);
+    };
+
     return(
     <View style = {styles.widgetspacing}>
         <View style={styles.cuboidContainer}>
             <View style={styles.cuboidSubContainer}>
                 <Text style={styles.cuboidbigTitle}>{'DOMO Cuboid'}</Text>
                 <Text style={styles.cuboidbigText1}>{"Today's Consumption"}</Text>
-                <Text style={styles.cuboidbigText2}>{'5,08 kWh ~ 0.1€'}</Text>
+                <Text style={styles.cuboidbigText2}>{tcons.toFixed(2)} kWh ~ {tval.toFixed(4)} €</Text>
                 <TouchableOpacity onPress={() => {this.setState({outletSwitch: !this.state.outletSwitch})}}>
                     <View>
                         <Image source = {this.state.outletSwitch ? require('./componentsAssets/ON_OFF_Green_Pressed.png') : require('./componentsAssets/ON_OFF_Green.png')} style={styles.WidgetSwitch}/>

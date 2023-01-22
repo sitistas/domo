@@ -1,11 +1,34 @@
 import React, { Component, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, onPress, RefreshControl} from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, onPress, Text} from 'react-native';
 
 
 
 class Smallbutton extends Component {
   state = {outletSwitch: this.props.InState};
   
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     outletSwitch: this.props.InState, 
+  //     date: new Date()};
+  // }
+  
+  // componentDidMount() {
+  //   this.timerID = setInterval(
+  //     () => this.tick(),
+  //     5000
+  //   );
+  // }
+  
+  // componentWillUnmount() {
+  //   clearInterval(this.timerID);
+  // }
+  
+  // tick() {
+  //   this.setState({
+  //     date: new Date()
+  //   });
+  // }
 
 
   render() {
@@ -48,6 +71,7 @@ class Smallbutton extends Component {
             <View style={styles.smallmWidget}>
               <Image source = {this.state.outletSwitch ? require('./componentsAssets/OutletImageDark.png') : require('./componentsAssets/OutletImage.png')} style={styles.smallWidgetImage}/>
             </View>
+            {/* <Text>{this.props.Date}</Text> */}
         </TouchableOpacity>
       </View>
     );

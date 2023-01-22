@@ -13,7 +13,7 @@ class Awardbig extends Component {
                     <View>
                       <Image source = { require('./componentsAssets/turtle_black.png')} style={styles.bigWidgetSwitch}/>
                     </View>
-                    <Text style = {styles.Text1}>{'Perfect Week'}</Text>
+                    <Text style = {styles.Text1}>{'Perfect Day'}</Text>
                 </View>
             </View>
         </View>
@@ -28,7 +28,7 @@ class Awardbig extends Component {
                     <View>
                       <Image source = { require('./componentsAssets/turtle.png')} style={styles.bigWidgetSwitch}/>
                     </View>
-                    <Text style = {styles.Text1}>{'Perfect Week'}</Text>
+                    <Text style = {styles.Text1}>{'Perfect Day'}</Text>
                 </View>
             </View>
         </View>

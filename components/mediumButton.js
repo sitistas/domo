@@ -3,9 +3,33 @@ import { StyleSheet, View, Image, TouchableOpacity, onPress} from 'react-native'
 
 
 class Mediumbutton extends Component {
-    state = {outletSwitch: false};
+    state = {outletSwitch: this.props.InState};
   
     render() {
+
+      var ws = new WebSocket('ws://192.168.2.7:2014');
+    ws.onopen = () => {
+      console.log('opened');
+      
+      
+        if (this.state.outletSwitch)
+        {
+          ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+        else
+        {
+          ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
+        }
+      
+      
+        
+    } 
+
+    ws.onclose = e => {
+      // connection closed
+      //console.log(e.code, e.reason);
+    };
+    
     return(
         <View style = {styles.widgetSpacing}>
             <View style={this.state.outletSwitch ? styles.mediumWidgetContainerPressed : styles.mediumWidgetContainer}>
@@ -46,6 +70,7 @@ const styles = StyleSheet.create({
         padding: 11, 
       },
       mediumWidget: {
+        //paddingTop: 20,
         flex: 1,
         flexDirection: 'collumn'
       },

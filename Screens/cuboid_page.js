@@ -5,45 +5,40 @@ import Cuboidbig from '../components/cuboidbig';
 import MediumbuttonHorizontal from '../components/mediumButtonHorizontal';
 import Consumptiongraph from '../components/consumptiongraph';
 
-class CuboidPage extends Component
-{
-  componentScreenDidMount() {
-    this.props.fetchData();
-    this.willFocusSubscription = this.props.navigation.addListener(
-      'DOMO',
-      () => {
-        this.props.fetchData();
-      }
+class CuboidPage extends Component{
+  
+  
+
+  render()
+  {
+    var wattconscub1 = (global.TodayConsumption[0].at(-1).state - global.TodayConsumption[0][0].state);
+    var wattconscub2 = (global.TodayConsumption[1].at(-1).state - global.TodayConsumption[1][0].state);
+    var twattcons= wattconscub1+wattconscub2;
+    var tgval= wattconscub1*global.price + wattconscub2*global.price;
+    
+    
+    return(
+        <View style = {styles.root}>
+        <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
+        <StatusBar style="auto" />
+        
+        <View style = {styles.appContainer}>
+            
+            <ScrollView>
+                <Cuboidbig TCons={twattcons} TVal={tgval} MACadd = {global.outlets.xMAC4} InState = {global.outlets.state4}/>
+                <MediumbuttonHorizontal Consume1= {wattconscub1} Val1={wattconscub1*global.price} Consume2= {wattconscub2} Val2={wattconscub2*global.price} />
+                <View>
+                    <Text style = {styles.roomText}>Device Consumption</Text>
+                </View>
+                <Consumptiongraph Consumption = {global.TodayConsumption.slice(0,1)} ConsValue = {twattcons}/>
+                <View style = {styles.bottomgap}></View>
+            </ScrollView>
+            
+        </View>
+        </ImageBackground>
+    </View>
     );
   }
-
-  componentScreenWillUnmount() {
-    this.willFocusSubscription();
-  }
-  render()
-    {
-        return(
-            <View style = {styles.root}>
-            <ImageBackground source = {require('../assets/background.png')} resizeMode="cover" style={styles.imageBackground}>
-            <StatusBar style="auto" />
-            
-            <View style = {styles.appContainer}>
-                
-                <ScrollView>
-                    <Cuboidbig/>
-                    <MediumbuttonHorizontal/>
-                    <View>
-                        <Text style = {styles.roomText}>Device Consumption</Text>
-                    </View>
-                    <Consumptiongraph Consumption = {global.TodayConsumption.slice(0,1)} ConsValue = {global.wattcons}/>
-                    <View style = {styles.bottomgap}></View>
-                </ScrollView>
-                
-            </View>
-            </ImageBackground>
-        </View>
-        );
-    }
 }
 
 export default CuboidPage;

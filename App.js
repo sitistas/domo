@@ -12,6 +12,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { FlatList, Text, View, Button, TextInput, Image, ImageBackground, TouchableOpacity, onPress, Dimensions, ScrollView } from 'react-native';
 
+
+
+
+
+
+
 export default function App() {
   const Stack = createStackNavigator();
   const [loaded] = useFonts({
