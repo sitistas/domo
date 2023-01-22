@@ -25,7 +25,7 @@ class AwardsPage extends Component {
             </View>
 
             <ScrollView>
-              <Awardbig/>
+              <Awardbig Award/>
             </ScrollView>
            
 

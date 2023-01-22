@@ -2,25 +2,41 @@ import React, { Component } from 'react';
 import { StyleSheet, Text,Image, View, TouchableOpacity, onPress} from 'react-native';
 
 class Awardbig extends Component {
-  state = {awardSwitch: false};
     render() {
-    
-    return(
-    <View style = {styles.widgetspacing}>
-        <View style={styles.awardsContainer}>
-            <View style={styles.awardSubContainer}>
-                <TouchableOpacity onPress={() => {this.setState({awardSwitch: !this.state.awardSwitch})}}>
-                  <View>
-                      <Image source = {this.state.awardSwitch ? require('./componentsAssets/turtle.png') : require('./componentsAssets/qm.png')} style={styles.bigWidgetSwitch}/>
-                  </View>
-                </TouchableOpacity>
-                <Text style = {styles.Text1}>{'Perfect Week'}</Text>
+    var sval = this.props.Award;
+    if(sval>global.limit)
+    {
+      return(
+        <View style = {styles.widgetspacing}>
+            <View style={styles.awardsContainer}>
+                <View style={styles.awardSubContainer}>
+                    <View>
+                      <Image source = { require('./componentsAssets/turtle_black.png')} style={styles.bigWidgetSwitch}/>
+                    </View>
+                    <Text style = {styles.Text1}>{'Perfect Week'}</Text>
+                </View>
             </View>
         </View>
-    </View>
-        
-    );
-  }
+        );
+    }
+    else
+    {
+      return(
+        <View style = {styles.widgetspacing}>
+            <View style={styles.awardsContainer}>
+                <View style={styles.awardSubContainer}>
+                    <View>
+                      <Image source = { require('./componentsAssets/turtle.png')} style={styles.bigWidgetSwitch}/>
+                    </View>
+                    <Text style = {styles.Text1}>{'Perfect Week'}</Text>
+                </View>
+            </View>
+        </View>
+            
+        );
+      }
+
+    }
 }
 
 export default Awardbig;
