@@ -188,7 +188,7 @@ class HomePage extends Component {
         </View>
       );
     } else {
-      console.log(this.state.result[2]);
+      //console.log(this.state.result[2]);
       //calculate today's consumption
       
 
@@ -241,7 +241,7 @@ class HomePage extends Component {
       // console.log(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate());
       // console.log(global.TodayConsumption);
       // console.log(this.state.result[0].length);
-      console.log(global.outlets);
+      //console.log(global.outlets);
       // console.log(this.state.result[0][this.state.result[0].length-1]);
       // console.log(this.state.result[0].at(-1).last_changed);
       // console.log(this.state.result[0].at(-1).state);
