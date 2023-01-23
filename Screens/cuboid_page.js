@@ -16,6 +16,7 @@ class CuboidPage extends Component{
     var twattcons= wattconscub1+wattconscub2;
     var tgval= wattconscub1*global.price + wattconscub2*global.price;
     
+    console.log(global.TodayConsumption.slice(0,1))
     
     return(
         <View style = {styles.root}>

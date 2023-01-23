@@ -4,8 +4,11 @@ import { StyleSheet, View, Image, TouchableOpacity, onPress, Text} from 'react-n
 
 
 class Smallbutton extends Component {
-  state = {outletSwitch: this.props.InState};
-  
+  constructor(props) {
+    super(props);
+
+    this.state = {outletSwitch: this.props.InState};
+  }
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -38,16 +41,34 @@ class Smallbutton extends Component {
     var ws = new WebSocket('ws://192.168.2.7:2014');
     ws.onopen = () => {
       console.log('opened');
+      var temp;
       
+      ws.send('ReportStates')
       
-        if (this.state.outletSwitch)
-        {
-          ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
-        }
-        else
-        {
-          ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
-        }
+      ws.onmessage = e => {
+        
+        if (e.data[0] == 'P'){
+          temp = JSON.parse(e.data.slice(10,e.data.length));
+          
+
+          if (temp.xMAC == this.props.MACadd){
+            if (temp.lastSeen == 0){this.state.outletSwitch = temp.IsOn;}
+            else {this.state.outletSwitch = false}
+            //this.state.isLoading = false;
+            //var result = temp.IsOn;
+            console.log(temp.xMAC, this.state.outletSwitch);
+            
+          }
+        }  
+      }; 
+      if (this.state.outletSwitch)
+      {
+        ws.send('TurnOn {"xMAC":"' + this.props.MACadd + '","Number":10}');
+      }
+      else
+      {
+        ws.send('TurnOff {"xMAC":"' + this.props.MACadd + '","Number":10}');
+      }
       
       
         

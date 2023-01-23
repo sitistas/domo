@@ -46,7 +46,7 @@ class HomePage extends Component {
   //   }
 
   async getConsData(){
-    const result = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
+    const result = await fetch('http://204.216.218.14:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
         "content-type": "application/json",
@@ -67,13 +67,13 @@ class HomePage extends Component {
 
   
   async getConsDataMonth(){
-    const resultMonth = await fetch('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-01T00:00:00+02:00?end_time=' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T23%3A59%3A59%2B02%3A00&filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
+    const resultMonth = await fetch('http://204.216.218.14:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-01T00:00:00+02:00?end_time=' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T23%3A59%3A59%2B02%3A00&filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes', {
       headers: {
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4Y2I1OTk5YTRiZDI0Mjg0OGZmMjFkZmM0NmU1MTY1NSIsImlhdCI6MTY2OTU0ODU3OSwiZXhwIjoxOTg0OTA4NTc5fQ.0Xjp3tXMRBxQzMcpBJfycOt_BKAgmD2darfnJKUg5J4",
         "content-type": "application/json",
     }});
     const resultJsonMonth = await resultMonth.json();
-    console.log('http://129.152.26.72:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes');
+    console.log('http://204.216.218.14:8123/api/history/period/' + new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() + 'T00:00:00+02:00?filter_entity_id=sensor.pc_energy,sensor.cuboid_1_energy,sensor.3rd_energy&minimal_response&no_attributes');
     return resultJsonMonth;
   }
   
@@ -188,7 +188,7 @@ class HomePage extends Component {
         </View>
       );
     } else {
-      //console.log(this.state.resultMonth);
+      console.log(this.state.result[2]);
       //calculate today's consumption
       
 

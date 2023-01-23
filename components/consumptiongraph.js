@@ -34,7 +34,7 @@ class Consumptiongraph extends Component {
     var time24=0;
     var i;
     var j;
-      
+    
     for (j = 0; j < todCons.length; j++){
       
       for(i = 1; i < todCons[j].length; i++){
@@ -42,7 +42,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 0){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -52,7 +52,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 1){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -62,7 +62,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 2){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -72,7 +72,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 3){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -81,7 +81,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 4){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -90,7 +90,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 5){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -99,7 +99,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 6){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -108,7 +108,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 7){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -117,7 +117,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 8){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -126,7 +126,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 9){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -135,7 +135,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 10){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -144,16 +144,17 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 11){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
           time12 = time12 + parseFloat(temp3)*1000 ;
+          //console.log(todCons[j][i].state)
         }
         if (new Date(todCons[j][i].last_changed).getHours() == 12){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = (parseFloat(temp1)-parseFloat(temp2));
@@ -162,7 +163,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 13){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -171,7 +172,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 14){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -180,7 +181,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 15){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -189,7 +190,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 16){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -198,7 +199,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 17){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -207,7 +208,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 18){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -216,7 +217,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 19){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -225,7 +226,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 20){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -234,7 +235,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 21){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -243,7 +244,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 22){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
@@ -252,7 +253,7 @@ class Consumptiongraph extends Component {
         if (new Date(todCons[j][i].last_changed).getHours() == 23){
           var temp1 = todCons[j][i].state;
           var temp2 = todCons[j][i-1].state;
-          if(temp2 == 'unknown' || temp1 == 'unknown'){temp2 = 0; temp1 = 0;}
+          if(temp2 == 'unknown' || temp1 == 'unknown' || temp1 == 'unavailable' || temp2 == 'unavailable'){temp2 = 0; temp1 = 0;}
           if(!temp1){temp1 = 0; temp2 = 0}
           if(!temp2){temp1 = 0; temp2 = 0;}
           var temp3 = parseFloat(temp1)-parseFloat(temp2);
